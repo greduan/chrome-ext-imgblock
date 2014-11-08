@@ -1,12 +1,12 @@
 root = true
 
 [*.js]
-tab_style = space
-tab_width = 4
+indent_style = space
+indent_size = 4
 
 [*.json]
-tab_style = space
-tab_width = 2
+indent_style = space
+indent_size = 2
 
 [*.css]
-tab_style = tab
+indent_style = tab

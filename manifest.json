@@ -3,12 +3,19 @@
   "name": "Imgblock",
   "version": "0.1.0",
   "description": "Think Flashblock but for images",
+  "background": {
+    "scripts": ["background.js"]
+  },
   "content_scripts": [
     {
-      "matches": ["http://*/*", "https://*/*"],
+      "matches": ["*://*/*"],
       "css": ["contentstyles.css"],
       "js": ["contentscript.js"]
     }
   ],
-  "permissions": []
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "*://*/*"
+  ]
 }
