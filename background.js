@@ -1,11 +1,14 @@
 'use strict';
 
-var patterns = ["*://*/*"];
+var patterns = ['http://*/*', 'https://*/*'],
+    on = false;
 
-chrome.webRequest.onBeforeRequest.addListener(function (details) {
-    if (chrome.runtime.lastError) {
-        console.error(chrome.runtime.lastError.message);
-    }
+if (on) {
+    chrome.webRequest.onBeforeRequest.addListener(function (details) {
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError.message);
+        }
 
-    return { cancel: true };
-}, { urls: patterns, types: ["image"] }, ["blocking"]);
+        return { cancel: true };
+    }, { urls: patterns, types: ['image'] }, ['blocking']);
+}
