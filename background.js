@@ -1,7 +1,7 @@
 'use strict';
 
 var patterns = ['http://*/*', 'https://*/*'],
-    on = false;
+    on = true;
 
 if (on) {
     chrome.webRequest.onBeforeRequest.addListener(function (details) {
