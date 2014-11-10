@@ -47,6 +47,7 @@ function clickEventFunc(e) {
         });
 
         if (target.parentElement.tagName.toLowerCase() === 'a') {
+            e.preventDefault();
             return false;
         }
     }
