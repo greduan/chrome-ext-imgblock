@@ -2,7 +2,7 @@
 
 All changes that would affect users will be listed in this file.
 
-## 0.1.0 - 2014-11-10
+## 0.1.0-alpha - 2014-11-10
 
 Initial release.  Lots of testing to be done, lots of features to be added.  But
 the core features are integrated.
