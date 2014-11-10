@@ -32,10 +32,23 @@ function isStringInArray(array, string) {
 }
 
 function clickEventFunc(e) {
-    var target = getEventTarget(e);
+    var target = getEventTarget(e),
+        message;
 
     if (isStringInArray(target.className.split(' '), 'imgblock-boop')) {
-        console.log('click yo');
+        message = {
+            addToWhitelist: true,
+            url: target.getAttribute('data-imgblock-src')
+        };
+        // switch with new url and do magic call for it to not be blocked
+        chrome.runtime.sendMessage(message, function (res) {
+            target.src = message.url;
+            target.classList.remove('imgblock-boop');
+        });
+
+        if (target.parentElement.tagName.toLowerCase() === 'a') {
+            return false;
+        }
     }
 }
 
