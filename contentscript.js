@@ -4,24 +4,16 @@
 var imgs = document.getElementsByTagName('img'),
     i,
     curImg,
-    parent;
+    parent,
+    bgImg = chrome.extension.getURL('images/imgblock-bg.png');
 
 for (i = 0; i < imgs.length; i += 1) {
     curImg = $(imgs[i]),
     parent = curImg.parent();
 
-    // check if the img is immediately surrounded by an anchor
-    // if it is then we want to do some stuff with the anchor, not the img
-    if (parent.get(0).tagName.toLowerCase() === 'a') {
-        parent.wrap('<div class="imgblock-container"></div>');
-        parent.addClass('imgblock-onbottom');
-        parent.after('<div class="imgblock-ontop"></div>');
-    } else {
-        curImg.wrap('<div class="imgblock-container"></div>');
-        curImg.addClass('imgblock-onbottom');
-        curImg.after('<div class="imgblock-ontop"></div>');
-    }
-    curImg.addClass('imgblock-img');
+    curImg.addClass('imgblock-boop');
+    curImg.attr('data-imgblock-src', curImg.attr('src'));
+    curImg.get(0).src = bgImg;
 }
 
 // click event stuff
@@ -42,12 +34,8 @@ function isStringInArray(array, string) {
 function clickEventFunc(e) {
     var target = getEventTarget(e);
 
-    if (target.tagName.toLowerCase() === 'div'
-        && isStringInArray(target.className.split(' '), 'imgblock-ontop')) {
-        // TODO: don't assume it's the first child
-        if (isStringInArray(target.parentElement.firstChild.className.split(' '), 'imgblock-img')) {
-            console.log('click yo');
-        }
+    if (isStringInArray(target.className.split(' '), 'imgblock-boop')) {
+        console.log('click yo');
     }
 }
 

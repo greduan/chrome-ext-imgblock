@@ -14,7 +14,7 @@
       "run_at": "document_end"
     }
   ],
-  "web_accessible_resources": ["images/ontop-bg.png"],
+  "web_accessible_resources": ["images/imgblock-bg.png"],
   "permissions": [
     "webRequest",
     "webRequestBlocking",

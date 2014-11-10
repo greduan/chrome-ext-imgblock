@@ -1,33 +1,12 @@
 .imgblock-container {
 	position: relative;
-	width: 100px;
+	width: auto;
 }
 
-.imgblock-onbottom {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 50px;
-	height: 50px;
-	z-index: 1px;
+.imgblock-boop {
 }
 
-.imgblock-ontop {
-	position: absolute;
-	left: 0px;
-	top: 0px;
-	width: 50px;
-	height: 50px;
-	z-index: 2px;
-
-	background: url('chrome-extension://__MSG_@@extension_id__/images/ontop-bg.png') no-repeat center center fixed;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
-}
-
-.imgblock-ontop:hover {
+.imgblock-boop:hover {
 	cursor: pointer;
 	opacity: 0.7;
 }
