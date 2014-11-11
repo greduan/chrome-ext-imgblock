@@ -3,6 +3,7 @@
 //
 // the stuff that happens on page load
 //
+
 var imgs = document.getElementsByTagName('img'),
     i,
     curImg,
@@ -38,6 +39,20 @@ function isStringInArray(array, string) {
     }
 }
 
+function findNearestParent(element, parentTag, limit) {
+    var parent = element.parentElement;
+ 
+    if (limit < 0) {
+        return { foundIt: false };
+    }
+ 
+    if (element.tagName.toLowerCase() === parentTag) {
+        return { element: element, foundIt: true };
+    }
+ 
+    return findNearestParent(parent, parentTag, limit - 1);
+}
+
 // gets called at every click
 function clickEventFunc(e) {
     var target = getEventTarget(e),
@@ -50,6 +65,7 @@ function clickEventFunc(e) {
             addToWhitelist: true,
             url: target.getAttribute('data-imgblock-src')
         };
+
         // switch with new url and do magic call for it to not be blocked
         chrome.runtime.sendMessage(message, function (res) {
             target.src = message.url;
@@ -57,7 +73,7 @@ function clickEventFunc(e) {
         });
 
         // prevent a click on an anchor/link to redirect you somewhere
-        if (target.parentElement.tagName.toLowerCase() === 'a') {
+        if (findNearestParent(target, 'a', 2).foundIt) {
             e.preventDefault();
             return false;
         }
@@ -66,3 +82,4 @@ function clickEventFunc(e) {
 
 // event delegation, look it up
 document.body.addEventListener('click', clickEventFunc, false);
+
