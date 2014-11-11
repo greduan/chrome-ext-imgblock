@@ -73,4 +73,3 @@ function clickEventFunc(e) {
 
 // event delegation, look it up
 document.body.addEventListener('click', clickEventFunc, false);
-

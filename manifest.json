@@ -14,10 +14,12 @@
       "run_at": "document_end"
     }
   ],
+  "options_page": "options.html",
   "web_accessible_resources": ["images/imgblock-bg.png"],
   "permissions": [
     "webRequest",
     "webRequestBlocking",
-    "<all_urls>"
+    "<all_urls>",
+    "storage"
   ]
 }
