@@ -29,16 +29,7 @@ function getEventTarget(e) {
     return e.target || e.srcElement;
 }
 
-// quick util function, not really necessary, just nice
-function isStringInArray(array, string) {
-    var i = array.indexOf(string);
-    if (i < 0) {
-        return false;
-    } else if (i >= 0) {
-        return true;
-    }
-}
-
+// checks if the specified parent tag can be found with a certain limit
 function findNearestParent(element, parentTag, limit) {
     var parent = element.parentElement;
  
@@ -59,7 +50,7 @@ function clickEventFunc(e) {
         message;
 
     // make sure we pickup the right clicks
-    if (isStringInArray(target.className.split(' '), 'imgblock-boop')) {
+    if (target.className.split(' ').indexOf('imgblock-boop') >= 0) {
         // message to send to background
         message = {
             addToWhitelist: true,
