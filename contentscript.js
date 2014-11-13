@@ -8,7 +8,12 @@ var imgs = document.getElementsByTagName('img'),
     i,
     curImg,
     parent,
-    bgImg = chrome.extension.getURL('images/imgblock-bg.png');
+    bgImg = chrome.extension.getURL('images/imgblock-bg.png'),
+    opts;
+
+chrome.storage.sync.get('options', function (obj) {
+    opts = obj.options;
+});
 
 for (i = 0; i < imgs.length; i += 1) {
     curImg = $(imgs[i]),
@@ -64,7 +69,7 @@ function clickEventFunc(e) {
         });
 
         // prevent a click on an anchor/link to redirect you somewhere
-        if (findNearestParent(target, 'a', 2).foundIt) {
+        if (findNearestParent(target, 'a', opts.parentLimit).foundIt) {
             e.preventDefault();
             return false;
         }

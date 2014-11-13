@@ -9,18 +9,21 @@
             opts.whitelist = obj.options.whitelist || '';
 
             document.getElementsByName('parentLimit')[0].value = opts.parentLimit;
-            document.getElementsByName('whitelist')[0].value = opts.whitelist;
+            document.getElementsByName('fileWhitelist')[0].value = opts.fileWhitelist;
+            document.getElementsByName('websiteWhitelist')[0].value = opts.websiteWhitelist;
         });
     });
 
     document.getElementsByName('save')[0].addEventListener('click', function () {
         var parentLimit = document.getElementsByName('parentLimit')[0].value,
-            whitelist = document.getElementsByName('whitelist')[0].value;
+            fileWhitelist = document.getElementsByName('fileWhitelist')[0].value,
+            websiteWhitelist = document.getElementsByName('websiteWhitelist')[0].value;
 
         chrome.storage.sync.set({
             options: {
                 parentLimit: parentLimit,
-                whitelist: whitelist
+                fileWhitelist: fileWhitelist,
+                websiteWhitelist: websiteWhitelist
             }
         }, function () {
             document.getElementById('saved').style.display = 'block';
