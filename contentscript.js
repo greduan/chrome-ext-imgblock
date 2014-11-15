@@ -41,7 +41,7 @@ function findNearestParent(element, parentTag, limit) {
     if (limit < 0) {
         return { foundIt: false };
     }
- 
+
     if (element.tagName.toLowerCase() === parentTag) {
         return { element: element, foundIt: true };
     }
@@ -59,12 +59,12 @@ function clickEventFunc(e) {
         // message to send to background
         message = {
             addToWhitelist: true,
-            url: target.getAttribute('data-imgblock-src')
+            imgUrl: target.getAttribute('data-imgblock-src')
         };
 
-        // switch with new url and do magic call for it to not be blocked
+        // switch with new URL and do magic call for it to not be blocked
         chrome.runtime.sendMessage(message, function (res) {
-            target.src = message.url;
+            target.src = message.imgUrl;
             target.classList.remove('imgblock-boop');
         });
 
