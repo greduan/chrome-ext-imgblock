@@ -2,8 +2,7 @@
 
 var patterns = ['http://*/*', 'https://*/*'],
     tempImgWhitelist = [],
-    opts,
-    cancelPage;
+    opts;
 
 chrome.storage.sync.get('options', function (obj) {
     opts = obj.options;
@@ -29,11 +28,10 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
 
     // not an image so we don't have to worry
     if (details.type !== 'image') {
+        if (details.type === 'main frame') {
+        }
         return { cancel: false };
-    }
-
-    // it is an image, logic goes here
-    if (details.type === 'image') {
+    } else {
         // very crude file URL whitelist feature
         if (opts.fileWhitelist.split('\n').indexOf(details.url) >= 0) {
             return { cancel: false };
