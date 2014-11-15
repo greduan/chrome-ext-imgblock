@@ -26,8 +26,6 @@ chrome.webRequest.onBeforeRequest.addListener(function (details) {
         console.error(chrome.runtime.lastError.message);
     }
 
-    console.log(details);
-
     // very crude website URL whitelist feature
     // if (opts.websiteWhitelist.split('\n').indexOf() >= 0) {
     //     //
