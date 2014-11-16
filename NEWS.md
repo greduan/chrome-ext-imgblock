@@ -2,6 +2,19 @@
 
 All changes that would affect users will be listed in this file.
 
+## Unreleased (0.2.0-alpha) - YYYY-MM-DD
+
+Integrated some basic whitelist features.  And an Options page.
+
+These whitelist features would allow you to not block images which have a
+certain string in their URL.
+
+They also allow you to not block _any_ images if you're on a certain website.
+Useful if for example if the whole point of the website are the images.
+
+In order to configure the whitelist an Options page was added.  This page allows
+you to configure the whitelists and other such things.
+
 ## 0.1.0-alpha - 2014-11-10
 
 Initial release.  Lots of testing to be done, lots of features to be added.  But
