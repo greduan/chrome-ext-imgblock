@@ -10,7 +10,7 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "css": ["contentstyles.css"],
-      "js": ["assets/jquery-2.1.1.min.js", "contentscript.js"],
+      "js": ["assets/jquery.min.js", "contentscript.js"],
       "run_at": "document_end"
     }
   ],
