@@ -1,0 +1,3 @@
+The website whitelist stuff could be achieved by adding a listener for new tabs
+or URL changes.  At which point we test it against the whitelist, if it doesn't
+check then we do the usual blocking stuff.
